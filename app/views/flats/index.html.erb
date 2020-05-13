@@ -1,0 +1,66 @@
+<head>
+    <title>RailsSimpleAirbnb</title>
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="aqAAk5cfpn9a3FVd0xZ9e+kXc+VrjI+/87XI46CgqsQN9PHfj1LYKiCaZ5uERGaVJldenTIuDQW0J25sXLPL+g==">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" media="all" href="/assets/application-6502403468dfbc20a08319e14cf02150d3c5cadebcd825473006e83ddf10c24e.css" data-turbolinks-track="reload">
+    <script src="/assets/application-dcfb333542166c7e176ac13945f5c27350627b932d212a870a5a112daf6d4db9.js" data-turbolinks-track="reload"></script><style>@media print {#ghostery-purple-box {display:none !important}}</style>
+ </head> 
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="./flats">Simple Airbnb</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="ml-auto flex">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search" value="">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <a class="btn btn-outline-primary my-2 my-sm-0 ml-2" href="/flats/new">Add Flat</a>
+        </div>
+      </div>
+    </nav>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Flats</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <p>All <%=@flats.length%> flats.</p>
+    </div>
+  </div>
+
+  <div class="row">
+  <%@flats.each do |flat|%>
+      <div class="col-4">
+        <div class="card mt-4">
+          <div class="card-content">
+            <div class="card-title text-center">
+              <h4><%=flat.name%></h4>
+            </div>
+            <div class="card-text bg-light text-center">
+                <p class="card-text"><%=flat.address%></p>
+                <div class="card-body">
+                    <i class="material-icons pr-2 mt-5">people</i><span class="mb-4"><%=flat.number_of_guests%></span>
+                    <i class="material-icons ml-2">euro_symbol</i> <%=flat.price_per_night%>
+                </div>
+            </div>
+          </div>
+          <div class="flat-card-actions text-center">
+            <a href="/flats/<%=flat.id%>">More info</a>
+            <a class="ml-3 text-warning" href="/flats/<%=flat.id%>/edit">Edit</a>
+            <a data-confirm="Are you sure?" class="ml-3 text-danger" rel="nofollow" data-method="delete" href="/flats/<%=flat.id%>">Remove</a>
+          </div>
+        </div>
+      </div>
+       <%end%>
+  </div>
+ 
+</div>

@@ -1,0 +1,14 @@
+<%= form_with model: @flat do |f|%>
+    <%=f.label(:name, "name")%>
+    <%= f.text_field :name%> <br>
+    <%=f.label(:address, "address")%>
+    <%= f.text_field :address%> <br>
+    <%=f.label(:description, "description")%>
+    <%= f.text_field :description%> <br>
+    <%= f.label(:number_of_guests, "Number of guests:") %>  
+    <%= f.number_field( :number_of_guests, in: 1.0..15.0, step: 1.0) %> <br>
+    <%= f.label(:price_per_night, "Price per night:") %>  
+    <%= f.number_field( :price_per_night, in:   1.0..500.0, step: 1.0) %> <br>
+    <%= f.submit "Create Flat", class: "btn btn-primary" %>
+    <a class="btn btn-danger ml-2" href="">Cancel</a>
+<%end%>
